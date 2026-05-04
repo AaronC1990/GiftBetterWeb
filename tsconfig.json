@@ -20,8 +20,8 @@
     ],
     "paths": {
       "@/*": ["./*"],
-      "@/types": ["../types/index.ts"],
-      "@/types/*": ["../types/*"]
+      "@/types": ["./types/index.ts"],
+      "@/types/*": ["./types/*"]
     }
   },
   "include": [
