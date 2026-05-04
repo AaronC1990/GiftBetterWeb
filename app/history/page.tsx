@@ -82,9 +82,10 @@ export default function HistoryPage() {
               });
 
               return (
-                <div
+                <Link
                   key={session.id}
-                  className="bg-white rounded-2xl border border-black/8 shadow-sm px-4 py-3 flex items-center gap-3"
+                  href={`/history/${session.id}?relationship=${session.relationship}&occasion=${session.occasion}`}
+                  className="bg-white rounded-2xl border border-black/8 shadow-sm px-4 py-3 flex items-center gap-3 hover:border-ruby/30 hover:shadow-md transition-all"
                 >
                   <div className="flex-1 min-w-0 space-y-0.5">
                     <div className="flex items-center gap-1.5">
@@ -105,7 +106,7 @@ export default function HistoryPage() {
                     </p>
                   </div>
                   <ChevronRightIcon size={16} className="text-gray-300 flex-shrink-0" />
-                </div>
+                </Link>
               );
             })}
           </div>
