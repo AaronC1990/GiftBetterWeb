@@ -1,0 +1,20 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-ruby: #9b1c31;
+  --color-ruby-dark: #7a1525;
+  --color-header: #3d0a14;
+  --color-gold: #f0a500;
+  --color-bg: #fdf8f8;
+  --font-playfair: var(--font-playfair);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #fdf8f8;
+  color: #1a1a1a;
+  -webkit-font-smoothing: antialiased;
+}
