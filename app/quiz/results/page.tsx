@@ -10,7 +10,7 @@ import { RELATIONSHIP_LABELS, OCCASION_LABELS } from "@/lib/quiz";
 import { AMAZON_DISCLOSURE } from "@/lib/amazon";
 
 export default function ResultsPage() {
-  const { results, answers, reset } = useQuizStore();
+  const { results, answers, reset, region } = useQuizStore();
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => setMounted(true), []);
@@ -80,7 +80,7 @@ export default function ResultsPage() {
             <GiftCard
               key={gift.id ?? i}
               gift={gift}
-              region="us"
+              region={region}
               isTopPick={i === 0}
               forPerson={recipientLabel || undefined}
               occasion={answers.occasion}

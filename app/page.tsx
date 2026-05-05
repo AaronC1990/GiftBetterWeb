@@ -3,14 +3,16 @@ import { FlameIcon } from "lucide-react";
 import Header from "@/components/Header";
 import TrendingCard from "@/components/TrendingCard";
 import { createClient } from "@/lib/supabase-server";
+import { detectRegionServer } from "@/lib/regionServer";
 import { AMAZON_DISCLOSURE } from "@/lib/amazon";
 import type { TrendingGift } from "@/types";
+import type { Region } from "@/lib/region";
 
-async function getTrendingGifts(): Promise<TrendingGift[]> {
+async function getTrendingGifts(region: Region): Promise<TrendingGift[]> {
   try {
     const supabase = await createClient();
     const { data, error } = await supabase.functions.invoke("gift-recommend", {
-      body: { mode: "trending", region: "us" },
+      body: { mode: "trending", region },
     });
     if (error) return [];
     return (data?.gifts as TrendingGift[]) ?? [];
@@ -20,7 +22,8 @@ async function getTrendingGifts(): Promise<TrendingGift[]> {
 }
 
 export default async function HomePage() {
-  const trending = await getTrendingGifts();
+  const region = await detectRegionServer();
+  const trending = await getTrendingGifts(region);
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -89,7 +92,7 @@ export default async function HomePage() {
             </div>
             <div className="flex gap-3 overflow-x-auto pb-2 -mx-4 px-4">
               {trending.map((gift, i) => (
-                <TrendingCard key={i} gift={gift} region="us" />
+                <TrendingCard key={i} gift={gift} region={region} />
               ))}
             </div>
           </section>

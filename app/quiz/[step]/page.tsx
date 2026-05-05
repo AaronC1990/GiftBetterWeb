@@ -1,7 +1,7 @@
 "use client";
 
 import { useRouter, useParams } from "next/navigation";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { ArrowLeftIcon, Loader2Icon } from "lucide-react";
 import { toast } from "sonner";
@@ -17,13 +17,18 @@ import {
   stepParamToIndex,
 } from "@/lib/quiz";
 import { fetchGiftRecommendations } from "@/lib/supabase-actions";
+import { detectRegionBrowser } from "@/lib/region";
 
 export default function QuizStepPage() {
   const params = useParams<{ step: string }>();
   const router = useRouter();
-  const { answers, setField, toggleArrayField, setResults, reset } = useQuizStore();
+  const { answers, setField, toggleArrayField, setResults, setRegion, region } = useQuizStore();
   const [loading, setLoading] = useState(false);
   const [text, setText] = useState((answers.extra_context as string) ?? "");
+
+  useEffect(() => {
+    setRegion(detectRegionBrowser());
+  }, [setRegion]);
 
   const stepIndex = stepParamToIndex(params.step);
   const step = QUIZ_STEPS[stepIndex];
@@ -82,7 +87,7 @@ export default function QuizStepPage() {
       const { gifts, session_id } = await fetchGiftRecommendations(
         finalAnswers as any,
         false,
-        "us"
+        region
       );
       setResults(gifts, session_id);
       router.push("/quiz/results");

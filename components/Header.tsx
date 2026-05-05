@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-import { BookmarkIcon, ClockIcon, LogInIcon, LogOutIcon } from "lucide-react";
+import { BookmarkIcon, ClockIcon, LogInIcon, LogOutIcon, BookOpenIcon } from "lucide-react";
 import { createClient } from "@/lib/supabase-browser";
 import type { User } from "@supabase/supabase-js";
 
@@ -37,6 +37,13 @@ export default function Header() {
         </Link>
 
         <nav className="flex items-center gap-1">
+          <Link
+            href="/guides"
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm text-white\80 hover:text-white hover:bg-white/10 transition-colors"
+          >
+            <BookOpenIcon size={14} />
+            <span className="hidden sm:inline">Guides</span>
+          </Link>
           <Link
             href="/saved"
             className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm text-white/80 hover:text-white hover:bg-white/10 transition-colors"
