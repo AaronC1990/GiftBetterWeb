@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { BookmarkIcon, ClockIcon, LogInIcon, LogOutIcon, BookOpenIcon } from "lucide-react";
@@ -33,6 +34,14 @@ export default function Header() {
     <header className="bg-header text-white border-b border-white/10">
       <div className="max-w-screen-lg mx-auto px-4 h-14 flex items-center gap-3">
         <Link href="/" className="flex items-center gap-2 flex-1 min-w-0">
+          <Image
+            src="/logo.png"
+            alt={tr.appName}
+            width={30}
+            height={30}
+            className="rounded-lg flex-shrink-0"
+            priority
+          />
           <span className="text-lg font-bold font-playfair tracking-wide truncate">
             {tr.appName}
           </span>
