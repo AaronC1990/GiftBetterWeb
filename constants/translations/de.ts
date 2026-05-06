@@ -1,0 +1,215 @@
+import type { WebTranslation } from "@/lib/i18n";
+
+const de: WebTranslation = {
+  appName: "GiftBetter",
+  lang: "de",
+
+  nav: {
+    guides: "Ratgeber",
+    saved: "Gespeichert",
+    history: "Verlauf",
+    signIn: "Anmelden",
+    signOut: "Abmelden",
+  },
+
+  home: {
+    headline: "Das perfekte Geschenk, ausgewählt für dich",
+    subheadline: "Beantworte ein paar kurze Fragen und erhalte in Sekunden passende Geschenkideen.",
+    cta: "Geschenk finden →",
+    hotGiftsTitle: "Aktuelle Trendgeschenke",
+    hotGiftsLoading: "Die aktuellen Trendgeschenke werden geladen!",
+    appStoreSoon: "Demnächst im App Store",
+    playStoreSoon: "Demnächst bei Google Play",
+  },
+
+  quiz: {
+    stepOf: (current, total) => `Schritt ${current} von ${total}`,
+    back: "Zurück",
+    home: "Startseite",
+    selectMultiple: "Alles Zutreffende auswählen",
+    extraContextPlaceholder: "z. B. liebt Craft Beer, hat kürzlich mit Klettern angefangen…",
+    loading: "Geschenke werden gesucht…",
+    submit: "Geschenkideen finden →",
+    next: "Weiter →",
+    errorIncomplete: "Bitte fülle zuerst alle Pflichtfelder aus.",
+    errorGeneric: "Etwas ist schiefgelaufen. Bitte versuche es erneut.",
+  },
+
+  results: {
+    title: "Deine Geschenkideen",
+    subtitle: (forPerson, occasion) => `Für deine/n ${forPerson.toLowerCase()} · ${occasion}`,
+    count: (n) => n === 1 ? `${n} Geschenk für dich ausgewählt` : `${n} Geschenke für dich ausgewählt`,
+    empty: "Noch keine Ergebnisse. Starte das Quiz, um Geschenkideen zu erhalten!",
+    startQuiz: "Quiz starten →",
+    startOver: "Neu starten",
+  },
+
+  saved: {
+    title: "Gespeicherte Geschenke",
+    count: (n) => `${n} gespeichert`,
+    empty: "Noch keine gespeicherten Geschenke.",
+    findCta: "Geschenkideen finden →",
+    deleteConfirm: "Dieses Geschenk aus deiner Liste entfernen?",
+    removed: "Geschenk entfernt",
+    removeError: "Geschenk konnte nicht entfernt werden",
+    loadError: "Gespeicherte Geschenke konnten nicht geladen werden",
+    buyBtn: "Auf Amazon kaufen",
+    removeTitle: "Entfernen",
+  },
+
+  history: {
+    title: "Suchverlauf",
+    pastSearches: (n) => `${n} ${n === 1 ? "Suche" : "Suchen"}`,
+    empty: "Noch keine Geschenksuchen.",
+    findCta: "Geschenkideen finden →",
+    loadError: "Verlauf konnte nicht geladen werden",
+    giftCount: (n) => `${n} ${n === 1 ? "Geschenk" : "Geschenke"}`,
+    pageTitle: "Geschenkideen",
+    sessionGiftCount: (n) => `${n} ${n === 1 ? "Geschenk" : "Geschenke"} aus dieser Suche`,
+    backLink: "← Zurück zum Verlauf",
+    noGifts: "Keine Geschenke für diese Sitzung gefunden.",
+  },
+
+  auth: {
+    signIn: "Anmelden",
+    createAccount: "Konto erstellen",
+    email: "E-Mail",
+    emailPlaceholder: "du@beispiel.de",
+    password: "Passwort",
+    passwordPlaceholder: "••••••••",
+    signInBtn: "Anmelden",
+    createBtn: "Konto erstellen",
+    signingIn: "Anmeldung läuft…",
+    creating: "Konto wird erstellt…",
+    noAccount: "Noch kein Konto?",
+    hasAccount: "Bereits ein Konto?",
+    signUp: "Registrieren",
+    welcome: "Willkommen zurück!",
+    error: "Etwas ist schiefgelaufen",
+    checkEmail: "Überprüfe deine E-Mails",
+    checkEmailBody: (email) =>
+      `Wir haben einen Bestätigungslink an ${email} gesendet. Klicke darauf, um dein Konto zu aktivieren, und melde dich dann an.`,
+    backToSignIn: "Zurück zur Anmeldung",
+  },
+
+  giftCard: {
+    buyBtn: "Auf Amazon kaufen",
+    saveBtn: "Speichern",
+    savedBtn: "Gespeichert",
+    topPick: "Top-Treffer",
+    saveError: "Speichern fehlgeschlagen – erneut versuchen",
+    notAuth: "Anmelden, um Geschenke zu speichern",
+  },
+
+  trending: {
+    buyBtn: "Auf Amazon kaufen →",
+  },
+
+  amazonDisclosure:
+    "Als Amazon-Partner verdient GiftBetter an qualifizierten Verkäufen.",
+
+  quizQuestions: {
+    relationship: "Für wen suchst du ein Geschenk?",
+    gender: "Welches Geschlecht hat die Person?",
+    occasion: "Was ist der Anlass?",
+    age_range: "Wie alt ist die Person?",
+    interests: "Was sind ihre Interessen?",
+    vibe: "Wie würdest du sie beschreiben?",
+    budget: "Was ist dein Budget?",
+    extra_context: "Beschreibe sie in ein paar Worten",
+  },
+
+  quizOptions: {
+    relationship: {
+      partner: "Partner/in",
+      parent: "Elternteil",
+      sibling: "Geschwister",
+      friend: "Freund/in",
+      coworker: "Kollege / Chef",
+      child: "Kind",
+      grandparent: "Großelternteil",
+      myself: "Ich selbst",
+      other: "Jemand anderes",
+    },
+    gender: {
+      man: "Mann",
+      woman: "Frau",
+      non_binary: "Nicht-binär",
+      not_sure: "Nicht sicher",
+    },
+    occasion: {
+      birthday: "Geburtstag",
+      anniversary: "Jahrestag",
+      holiday: "Feiertag",
+      graduation: "Abschluss",
+      new_baby: "Neues Baby",
+      wedding: "Hochzeit",
+      work_milestone: "Beruflicher Meilenstein",
+      mothers_day: "Muttertag",
+      just_because: "Einfach so",
+    },
+    age_range: {
+      under_12: "Unter 12",
+      "13_17": "13–17",
+      "18_25": "18–25",
+      "26_40": "26–40",
+      "41_60": "41–60",
+      "60_plus": "Über 60",
+    },
+    interests: {
+      outdoors: "Outdoor / Wandern",
+      tech: "Technik / Gadgets",
+      cooking: "Kochen / Essen",
+      reading: "Lesen / Bücher",
+      fitness: "Fitness / Sport",
+      music: "Musik",
+      art: "Kunst / Basteln",
+      gaming: "Gaming",
+      travel: "Reisen",
+      home: "Haus / Garten",
+      fashion: "Mode / Stil",
+      wellness: "Wellness / Spa",
+    },
+    vibe: {
+      practical: "Praktisch & unkompliziert",
+      cozy: "Gemütlich & häuslich",
+      adventurous: "Abenteuerlustig & mutig",
+      creative: "Kreativ & ausgefallen",
+      sentimental: "Gefühlvoll & nostalgisch",
+      social: "Gesellig & kontaktfreudig",
+    },
+    budget: {
+      under_25: "Unter 25 €",
+      under_50: "Unter 50 €",
+      under_100: "Unter 100 €",
+      under_200: "Unter 200 €",
+      no_limit: "Kein Limit",
+    },
+  },
+
+  occasionLabels: {
+    birthday: "Geburtstag",
+    anniversary: "Jahrestag",
+    holiday: "Feiertag",
+    graduation: "Abschluss",
+    new_baby: "Neues Baby",
+    wedding: "Hochzeit",
+    work_milestone: "Beruflicher Meilenstein",
+    mothers_day: "Muttertag",
+    just_because: "Einfach so",
+  },
+
+  relationshipLabels: {
+    partner: "Partner/in",
+    parent: "Elternteil",
+    sibling: "Geschwister",
+    friend: "Freund/in",
+    coworker: "Kollege / Chef",
+    child: "Kind",
+    grandparent: "Großelternteil",
+    myself: "Ich selbst",
+    other: "Jemand anderes",
+  },
+};
+
+export default de;

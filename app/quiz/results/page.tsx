@@ -6,33 +6,33 @@ import { ArrowLeftIcon, RefreshCwIcon } from "lucide-react";
 import Header from "@/components/Header";
 import GiftCard from "@/components/GiftCard";
 import { useQuizStore } from "@/lib/quizStore";
-import { RELATIONSHIP_LABELS, OCCASION_LABELS } from "@/lib/quiz";
-import { AMAZON_DISCLOSURE } from "@/lib/amazon";
+import { useTranslation } from "@/contexts/TranslationContext";
 
 export default function ResultsPage() {
   const { results, answers, reset, region } = useQuizStore();
   const [mounted, setMounted] = useState(false);
+  const tr = useTranslation();
 
   useEffect(() => setMounted(true), []);
 
   if (!mounted) return null;
 
   const recipientLabel =
-    RELATIONSHIP_LABELS[answers.relationship ?? ""] ?? answers.relationship ?? "";
+    tr.relationshipLabels[answers.relationship ?? ""] ?? answers.relationship ?? "";
   const occasionLabel =
-    OCCASION_LABELS[answers.occasion ?? ""] ?? answers.occasion ?? "";
+    tr.occasionLabels[answers.occasion ?? ""] ?? answers.occasion ?? "";
 
   if (results.length === 0) {
     return (
       <div className="flex flex-col min-h-screen">
         <Header />
         <main className="flex-1 flex flex-col items-center justify-center px-4 py-16 text-center space-y-4">
-          <p className="text-gray-500">No results yet. Take the quiz to get gift ideas!</p>
+          <p className="text-gray-500">{tr.results.empty}</p>
           <Link
             href="/quiz/1"
             className="bg-ruby hover:bg-ruby-dark text-white font-bold px-6 py-3 rounded-2xl transition-colors"
           >
-            Start the Quiz →
+            {tr.results.startQuiz}
           </Link>
         </main>
       </div>
@@ -43,18 +43,17 @@ export default function ResultsPage() {
     <div className="flex flex-col min-h-screen">
       <Header />
 
-      {/* Sub-header */}
       <div className="bg-header text-white px-4 py-4">
         <div className="max-w-screen-lg mx-auto space-y-1">
           <div className="flex items-center gap-2">
             <Link href="/quiz/1" className="text-white/60 hover:text-white transition-colors">
               <ArrowLeftIcon size={16} />
             </Link>
-            <h1 className="font-bold text-base">Your Gift Ideas</h1>
+            <h1 className="font-bold text-base">{tr.results.title}</h1>
           </div>
           {recipientLabel && occasionLabel && (
             <p className="text-white/70 text-xs ml-6">
-              For your {recipientLabel.toLowerCase()} · {occasionLabel}
+              {tr.results.subtitle(recipientLabel, occasionLabel)}
             </p>
           )}
         </div>
@@ -62,16 +61,14 @@ export default function ResultsPage() {
 
       <main className="flex-1 max-w-screen-lg mx-auto w-full px-4 py-6 space-y-6">
         <div className="flex items-center justify-between">
-          <p className="text-xs text-gray-500">
-            {results.length} gift{results.length !== 1 ? "s" : ""} curated for you
-          </p>
+          <p className="text-xs text-gray-500">{tr.results.count(results.length)}</p>
           <Link
             href="/quiz/1"
             onClick={() => reset()}
             className="flex items-center gap-1 text-xs text-ruby hover:text-ruby-dark font-medium"
           >
             <RefreshCwIcon size={12} />
-            Start over
+            {tr.results.startOver}
           </Link>
         </div>
 
@@ -88,7 +85,7 @@ export default function ResultsPage() {
           ))}
         </div>
 
-        <p className="text-[11px] text-gray-400 text-center pb-4">{AMAZON_DISCLOSURE}</p>
+        <p className="text-[11px] text-gray-400 text-center pb-4">{tr.amazonDisclosure}</p>
       </main>
     </div>
   );

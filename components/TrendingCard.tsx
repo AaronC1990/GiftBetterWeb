@@ -4,7 +4,8 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import { GiftIcon, XIcon } from "lucide-react";
-import { buildAmazonProductUrl, buildAmazonUrlWithCategory, AMAZON_DISCLOSURE } from "@/lib/amazon";
+import { buildAmazonProductUrl, buildAmazonUrlWithCategory } from "@/lib/amazon";
+import { useTranslation } from "@/contexts/TranslationContext";
 import type { TrendingGift } from "@/types";
 import type { Region } from "@/lib/region";
 
@@ -17,6 +18,7 @@ export default function TrendingCard({ gift, region = "us" }: Props) {
   const [modalOpen, setModalOpen] = useState(false);
   const [imgError, setImgError] = useState(false);
   const [mounted, setMounted] = useState(false);
+  const tr = useTranslation();
 
   useEffect(() => { setMounted(true); }, []);
 
@@ -94,10 +96,10 @@ export default function TrendingCard({ gift, region = "us" }: Props) {
                   rel="noopener noreferrer"
                   className="bg-ruby text-white text-sm font-semibold px-4 py-2 rounded-lg hover:bg-ruby-dark transition-colors"
                 >
-                  Buy on Amazon →
+                  {tr.trending.buyBtn}
                 </a>
               </div>
-              <p className="text-[10px] text-gray-400">{AMAZON_DISCLOSURE}</p>
+              <p className="text-[10px] text-gray-400">{tr.amazonDisclosure}</p>
             </div>
           </div>
         </div>,

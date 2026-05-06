@@ -1,4 +1,5 @@
 import { sanitizeString } from "./sanitize";
+import type { WebTranslation } from "./i18n";
 
 export interface QuizStep {
   id: string;
@@ -183,3 +184,17 @@ export const OCCASION_LABELS: Record<string, string> = {
   mothers_day: "Mother's Day",
   just_because: "Just because",
 };
+
+/** Return quiz steps with labels/questions translated, values unchanged. */
+export function getLocalizedSteps(tr: WebTranslation): QuizStep[] {
+  return QUIZ_STEPS.map((step) => ({
+    ...step,
+    question: tr.quizQuestions[step.id] ?? step.question,
+    options: step.options?.map((opt) => ({
+      ...opt,
+      label:
+        (tr.quizOptions[step.id as keyof typeof tr.quizOptions] as Record<string, string>)?.[opt.value] ??
+        opt.label,
+    })),
+  }));
+}

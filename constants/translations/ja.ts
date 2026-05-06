@@ -1,0 +1,215 @@
+import type { WebTranslation } from "@/lib/i18n";
+
+const ja: WebTranslation = {
+  appName: "GiftBetter",
+  lang: "ja",
+
+  nav: {
+    guides: "ガイド",
+    saved: "保存済み",
+    history: "履歴",
+    signIn: "ログイン",
+    signOut: "ログアウト",
+  },
+
+  home: {
+    headline: "ぴったりのギフトを、あなたのために",
+    subheadline: "いくつかの質問に答えるだけで、数秒でギフトアイデアをご提案します。",
+    cta: "ギフトを探す →",
+    hotGiftsTitle: "今人気のギフト",
+    hotGiftsLoading: "人気のギフトを読み込んでいます！",
+    appStoreSoon: "App Storeで近日公開",
+    playStoreSoon: "Google Playで近日公開",
+  },
+
+  quiz: {
+    stepOf: (current, total) => `ステップ ${current} / ${total}`,
+    back: "戻る",
+    home: "ホーム",
+    selectMultiple: "該当するものをすべて選んでください",
+    extraContextPlaceholder: "例：クラフトビールが好き、最近ボルダリングを始めた…",
+    loading: "ギフトを探しています…",
+    submit: "ギフトアイデアを見る →",
+    next: "次へ →",
+    errorIncomplete: "すべての必須項目を入力してください。",
+    errorGeneric: "問題が発生しました。もう一度お試しください。",
+  },
+
+  results: {
+    title: "あなたへのギフト提案",
+    subtitle: (forPerson, occasion) => `${forPerson}へ · ${occasion}`,
+    count: (n) => `${n}件のギフトを厳選しました`,
+    empty: "まだ結果がありません。クイズを受けてギフトアイデアを見つけましょう！",
+    startQuiz: "クイズを始める →",
+    startOver: "最初からやり直す",
+  },
+
+  saved: {
+    title: "保存済みギフト",
+    count: (n) => `${n}件保存済み`,
+    empty: "まだ保存されたギフトはありません。",
+    findCta: "ギフトアイデアを探す →",
+    deleteConfirm: "このギフトを保存リストから削除しますか？",
+    removed: "ギフトを削除しました",
+    removeError: "ギフトを削除できませんでした",
+    loadError: "保存済みギフトを読み込めませんでした",
+    buyBtn: "Amazonで購入",
+    removeTitle: "削除",
+  },
+
+  history: {
+    title: "検索履歴",
+    pastSearches: (n) => `${n}件の検索`,
+    empty: "まだギフト検索がありません。",
+    findCta: "ギフトアイデアを探す →",
+    loadError: "履歴を読み込めませんでした",
+    giftCount: (n) => `${n}件`,
+    pageTitle: "ギフトアイデア",
+    sessionGiftCount: (n) => `この検索から${n}件のギフト`,
+    backLink: "← 履歴に戻る",
+    noGifts: "このセッションにはギフトが見つかりません。",
+  },
+
+  auth: {
+    signIn: "ログイン",
+    createAccount: "アカウント作成",
+    email: "メールアドレス",
+    emailPlaceholder: "example@mail.com",
+    password: "パスワード",
+    passwordPlaceholder: "••••••••",
+    signInBtn: "ログイン",
+    createBtn: "アカウントを作成",
+    signingIn: "ログイン中…",
+    creating: "アカウント作成中…",
+    noAccount: "アカウントをお持ちでないですか？",
+    hasAccount: "すでにアカウントをお持ちですか？",
+    signUp: "登録する",
+    welcome: "おかえりなさい！",
+    error: "問題が発生しました",
+    checkEmail: "メールをご確認ください",
+    checkEmailBody: (email) =>
+      `${email} に確認リンクを送信しました。リンクをクリックしてアカウントを有効化し、再度ログインしてください。`,
+    backToSignIn: "ログインに戻る",
+  },
+
+  giftCard: {
+    buyBtn: "Amazonで購入",
+    saveBtn: "保存",
+    savedBtn: "保存済み",
+    topPick: "おすすめ",
+    saveError: "保存できませんでした — 再試行してください",
+    notAuth: "ギフトを保存するにはログインしてください",
+  },
+
+  trending: {
+    buyBtn: "Amazonで購入 →",
+  },
+
+  amazonDisclosure:
+    "Amazonアソシエイトとして、GiftBetterは適格販売により収入を得ています。",
+
+  quizQuestions: {
+    relationship: "誰にプレゼントを探していますか？",
+    gender: "その方の性別は？",
+    occasion: "何のお祝いですか？",
+    age_range: "年齢は？",
+    interests: "興味・関心は？",
+    vibe: "どんなタイプの人ですか？",
+    budget: "予算は？",
+    extra_context: "他に伝えたいことはありますか？",
+  },
+
+  quizOptions: {
+    relationship: {
+      partner: "パートナー / 配偶者",
+      parent: "親",
+      sibling: "兄弟姉妹",
+      friend: "友人",
+      coworker: "同僚 / 上司",
+      child: "子供",
+      grandparent: "祖父母",
+      myself: "自分自身",
+      other: "その他",
+    },
+    gender: {
+      man: "男性",
+      woman: "女性",
+      non_binary: "ノンバイナリー",
+      not_sure: "わからない",
+    },
+    occasion: {
+      birthday: "誕生日",
+      anniversary: "記念日",
+      holiday: "休日",
+      graduation: "卒業",
+      new_baby: "出産祝い",
+      wedding: "結婚",
+      work_milestone: "仕事の節目",
+      mothers_day: "母の日",
+      just_because: "特に理由はないけど",
+    },
+    age_range: {
+      under_12: "12歳未満",
+      "13_17": "13〜17歳",
+      "18_25": "18〜25歳",
+      "26_40": "26〜40歳",
+      "41_60": "41〜60歳",
+      "60_plus": "60歳以上",
+    },
+    interests: {
+      outdoors: "アウトドア / ハイキング",
+      tech: "テクノロジー / ガジェット",
+      cooking: "料理 / グルメ",
+      reading: "読書 / 本",
+      fitness: "フィットネス / スポーツ",
+      music: "音楽",
+      art: "アート / クラフト",
+      gaming: "ゲーム",
+      travel: "旅行",
+      home: "インテリア / ガーデニング",
+      fashion: "ファッション / スタイル",
+      wellness: "ウェルネス / スパ",
+    },
+    vibe: {
+      practical: "実用的・シンプル",
+      cozy: "インドア派・くつろぎ好き",
+      adventurous: "冒険心旺盛・大胆",
+      creative: "クリエイティブ・個性的",
+      sentimental: "感傷的・ノスタルジック",
+      social: "社交的・外向き",
+    },
+    budget: {
+      under_25: "3,000円未満",
+      under_50: "7,000円未満",
+      under_100: "15,000円未満",
+      under_200: "30,000円未満",
+      no_limit: "制限なし",
+    },
+  },
+
+  occasionLabels: {
+    birthday: "誕生日",
+    anniversary: "記念日",
+    holiday: "休日",
+    graduation: "卒業",
+    new_baby: "出産祝い",
+    wedding: "結婚",
+    work_milestone: "仕事の節目",
+    mothers_day: "母の日",
+    just_because: "特に理由はないけど",
+  },
+
+  relationshipLabels: {
+    partner: "パートナー",
+    parent: "親",
+    sibling: "兄弟姉妹",
+    friend: "友人",
+    coworker: "同僚",
+    child: "子供",
+    grandparent: "祖父母",
+    myself: "自分自身",
+    other: "大切な人",
+  },
+};
+
+export default ja;

@@ -10,7 +10,7 @@ import { toast } from "sonner";
 import Header from "@/components/Header";
 import { createClient } from "@/lib/supabase-browser";
 import { getGiftHistory } from "@/lib/supabase-actions";
-import { RELATIONSHIP_LABELS, OCCASION_LABELS } from "@/lib/quiz";
+import { useTranslation } from "@/contexts/TranslationContext";
 import type { GiftSession } from "@/types";
 
 export default function HistoryPage() {
@@ -18,6 +18,7 @@ export default function HistoryPage() {
   const [loading, setLoading] = useState(true);
   const [authed, setAuthed] = useState(false);
   const router = useRouter();
+  const tr = useTranslation();
 
   useEffect(() => {
     const supabase = createClient();
@@ -29,7 +30,7 @@ export default function HistoryPage() {
       setAuthed(true);
       getGiftHistory()
         .then(setSessions)
-        .catch(() => toast.error("Couldn't load history"))
+        .catch(() => toast.error(tr.history.loadError))
         .finally(() => setLoading(false));
     });
   }, []);
@@ -51,8 +52,8 @@ export default function HistoryPage() {
 
       <div className="bg-header text-white px-4 py-4">
         <div className="max-w-screen-lg mx-auto">
-          <h1 className="font-bold text-base">Gift History</h1>
-          <p className="text-white/60 text-xs">{sessions.length} past searches</p>
+          <h1 className="font-bold text-base">{tr.history.title}</h1>
+          <p className="text-white/60 text-xs">{tr.history.pastSearches(sessions.length)}</p>
         </div>
       </div>
 
@@ -60,22 +61,22 @@ export default function HistoryPage() {
         {sessions.length === 0 ? (
           <div className="text-center py-16 space-y-4">
             <GiftIcon size={40} className="mx-auto text-gray-300" />
-            <p className="text-gray-500 text-sm">No gift searches yet.</p>
+            <p className="text-gray-500 text-sm">{tr.history.empty}</p>
             <Link
               href="/quiz/1"
               className="inline-block bg-ruby hover:bg-ruby-dark text-white font-bold px-6 py-3 rounded-2xl transition-colors text-sm"
             >
-              Find Gift Ideas →
+              {tr.history.findCta}
             </Link>
           </div>
         ) : (
           <div className="space-y-2">
             {sessions.map((session) => {
               const relLabel =
-                RELATIONSHIP_LABELS[session.relationship] ?? session.relationship;
+                tr.relationshipLabels[session.relationship] ?? session.relationship;
               const occLabel =
-                OCCASION_LABELS[session.occasion] ?? session.occasion;
-              const date = new Date(session.created_at).toLocaleDateString("en-US", {
+                tr.occasionLabels[session.occasion] ?? session.occasion;
+              const date = new Date(session.created_at).toLocaleDateString(tr.lang, {
                 month: "short",
                 day: "numeric",
                 year: "numeric",
@@ -89,9 +90,7 @@ export default function HistoryPage() {
                 >
                   <div className="flex-1 min-w-0 space-y-0.5">
                     <div className="flex items-center gap-1.5">
-                      <span className="text-sm font-semibold text-gray-900">
-                        {relLabel}
-                      </span>
+                      <span className="text-sm font-semibold text-gray-900">{relLabel}</span>
                       <span className="text-gray-300">·</span>
                       <span className="text-sm text-gray-600">{occLabel}</span>
                     </div>
@@ -101,8 +100,7 @@ export default function HistoryPage() {
                       </p>
                     )}
                     <p className="text-xs text-gray-400">
-                      {date} · {session.recommendation_count} gift
-                      {session.recommendation_count !== 1 ? "s" : ""}
+                      {date} · {tr.history.giftCount(session.recommendation_count)}
                     </p>
                   </div>
                   <ChevronRightIcon size={16} className="text-gray-300 flex-shrink-0" />

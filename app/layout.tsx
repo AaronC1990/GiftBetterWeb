@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import { Playfair_Display } from "next/font/google";
 import { Toaster } from "sonner";
+import { TranslationProvider } from "@/contexts/TranslationContext";
+import { detectRegionServer } from "@/lib/regionServer";
+import { regionToLocale } from "@/lib/i18n";
 import "./globals.css";
 
 const playfair = Playfair_Display({
@@ -15,15 +18,20 @@ export const metadata: Metadata = {
     "Answer a few quick questions and get personalized gift ideas with Amazon buy links.",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const region = await detectRegionServer();
+  const locale = regionToLocale(region);
+
   return (
-    <html lang="en" className={`${playfair.variable} h-full`}>
+    <html lang={locale} className={`${playfair.variable} h-full`}>
       <body className="min-h-full flex flex-col antialiased bg-bg">
-        {children}
+        <TranslationProvider locale={locale}>
+          {children}
+        </TranslationProvider>
         <Toaster position="bottom-center" richColors />
       </body>
     </html>

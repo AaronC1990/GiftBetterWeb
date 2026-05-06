@@ -69,7 +69,7 @@ export const REGION_CONFIG: Record<Region, RegionConfig> = {
   },
   jp: {
     amazonDomain: "amazon.co.jp",
-    affiliateTag: "giftspark01-22",
+    affiliateTag: "giftspark03-22",
     serpDomain: "amazon.co.jp",
     locale: "ja",
     currencySymbol: "¥",

@@ -1,0 +1,215 @@
+import type { WebTranslation } from "@/lib/i18n";
+
+const en: WebTranslation = {
+  appName: "GiftBetter",
+  lang: "en",
+
+  nav: {
+    guides: "Guides",
+    saved: "Saved",
+    history: "History",
+    signIn: "Sign In",
+    signOut: "Sign Out",
+  },
+
+  home: {
+    headline: "The perfect gift, picked for you",
+    subheadline: "Answer a few quick questions and get curated gift ideas in seconds.",
+    cta: "Find a Gift →",
+    hotGiftsTitle: "Hot Gifts Right Now",
+    hotGiftsLoading: "Loading the current hot gifts for you!",
+    appStoreSoon: "Coming soon on App Store",
+    playStoreSoon: "Coming soon on Google Play",
+  },
+
+  quiz: {
+    stepOf: (current, total) => `Step ${current} of ${total}`,
+    back: "Back",
+    home: "Home",
+    selectMultiple: "Select all that apply",
+    extraContextPlaceholder: "e.g. loves craft beer, recently got into bouldering…",
+    loading: "Finding gifts…",
+    submit: "Get Gift Ideas →",
+    next: "Next →",
+    errorIncomplete: "Please complete all required steps first.",
+    errorGeneric: "Something went wrong. Please try again.",
+  },
+
+  results: {
+    title: "Your Gift Ideas",
+    subtitle: (forPerson, occasion) => `For your ${forPerson.toLowerCase()} · ${occasion}`,
+    count: (n) => n === 1 ? `${n} gift curated for you` : `${n} gifts curated for you`,
+    empty: "No results yet. Take the quiz to get gift ideas!",
+    startQuiz: "Start the Quiz →",
+    startOver: "Start over",
+  },
+
+  saved: {
+    title: "Saved Gifts",
+    count: (n) => `${n} saved`,
+    empty: "No saved gifts yet.",
+    findCta: "Find Gift Ideas →",
+    deleteConfirm: "Remove this gift from your saved list?",
+    removed: "Gift removed",
+    removeError: "Couldn't remove gift",
+    loadError: "Couldn't load saved gifts",
+    buyBtn: "Buy on Amazon",
+    removeTitle: "Remove",
+  },
+
+  history: {
+    title: "Gift History",
+    pastSearches: (n) => `${n} past ${n === 1 ? "search" : "searches"}`,
+    empty: "No gift searches yet.",
+    findCta: "Find Gift Ideas →",
+    loadError: "Couldn't load history",
+    giftCount: (n) => `${n} ${n === 1 ? "gift" : "gifts"}`,
+    pageTitle: "Gift Ideas",
+    sessionGiftCount: (n) => `${n} ${n === 1 ? "gift" : "gifts"} from this search`,
+    backLink: "← Back to history",
+    noGifts: "No gifts found for this session.",
+  },
+
+  auth: {
+    signIn: "Sign In",
+    createAccount: "Create Account",
+    email: "Email",
+    emailPlaceholder: "you@example.com",
+    password: "Password",
+    passwordPlaceholder: "••••••••",
+    signInBtn: "Sign In",
+    createBtn: "Create Account",
+    signingIn: "Signing in…",
+    creating: "Creating account…",
+    noAccount: "Don't have an account?",
+    hasAccount: "Already have an account?",
+    signUp: "Sign up",
+    welcome: "Welcome back!",
+    error: "Something went wrong",
+    checkEmail: "Check your email",
+    checkEmailBody: (email) =>
+      `We sent a confirmation link to ${email}. Click it to activate your account, then come back and sign in.`,
+    backToSignIn: "Back to sign in",
+  },
+
+  giftCard: {
+    buyBtn: "Buy on Amazon",
+    saveBtn: "Save",
+    savedBtn: "Saved",
+    topPick: "Great match",
+    saveError: "Couldn't save — try again",
+    notAuth: "Sign in to save gifts",
+  },
+
+  trending: {
+    buyBtn: "Buy on Amazon →",
+  },
+
+  amazonDisclosure:
+    "As an Amazon Associate, GiftBetter earns from qualifying purchases.",
+
+  quizQuestions: {
+    relationship: "Who are you shopping for?",
+    gender: "What's their gender?",
+    occasion: "What's the occasion?",
+    age_range: "How old are they?",
+    interests: "What are their interests?",
+    vibe: "How would you describe them?",
+    budget: "What's your budget?",
+    extra_context: "Describe them in a few words",
+  },
+
+  quizOptions: {
+    relationship: {
+      partner: "Partner / Spouse",
+      parent: "Parent",
+      sibling: "Sibling",
+      friend: "Friend",
+      coworker: "Coworker / Boss",
+      child: "Child",
+      grandparent: "Grandparent",
+      myself: "Myself",
+      other: "Someone else",
+    },
+    gender: {
+      man: "Man",
+      woman: "Woman",
+      non_binary: "Non-binary",
+      not_sure: "Not sure",
+    },
+    occasion: {
+      birthday: "Birthday",
+      anniversary: "Anniversary",
+      holiday: "Holiday",
+      graduation: "Graduation",
+      new_baby: "New baby",
+      wedding: "Wedding",
+      work_milestone: "Work milestone",
+      mothers_day: "Mother's Day",
+      just_because: "Just because",
+    },
+    age_range: {
+      under_12: "Under 12",
+      "13_17": "13–17",
+      "18_25": "18–25",
+      "26_40": "26–40",
+      "41_60": "41–60",
+      "60_plus": "60+",
+    },
+    interests: {
+      outdoors: "Outdoors / Hiking",
+      tech: "Tech / Gadgets",
+      cooking: "Cooking / Food",
+      reading: "Reading / Books",
+      fitness: "Fitness / Sports",
+      music: "Music",
+      art: "Art / Crafts",
+      gaming: "Gaming",
+      travel: "Travel",
+      home: "Home / Garden",
+      fashion: "Fashion / Style",
+      wellness: "Wellness / Spa",
+    },
+    vibe: {
+      practical: "Practical & no-fuss",
+      cozy: "Cozy & homebody",
+      adventurous: "Adventurous & bold",
+      creative: "Creative & quirky",
+      sentimental: "Sentimental & nostalgic",
+      social: "Social & outgoing",
+    },
+    budget: {
+      under_25: "Under $25",
+      under_50: "Under $50",
+      under_100: "Under $100",
+      under_200: "Under $200",
+      no_limit: "No limit",
+    },
+  },
+
+  occasionLabels: {
+    birthday: "Birthday",
+    anniversary: "Anniversary",
+    holiday: "Holiday",
+    graduation: "Graduation",
+    new_baby: "New baby",
+    wedding: "Wedding",
+    work_milestone: "Work milestone",
+    mothers_day: "Mother's Day",
+    just_because: "Just because",
+  },
+
+  relationshipLabels: {
+    partner: "Partner",
+    parent: "Parent",
+    sibling: "Sibling",
+    friend: "Friend",
+    coworker: "Coworker / Boss",
+    child: "Child",
+    grandparent: "Grandparent",
+    myself: "Myself",
+    other: "Someone else",
+  },
+};
+
+export default en;

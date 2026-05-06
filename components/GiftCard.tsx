@@ -6,6 +6,7 @@ import { BookmarkIcon, ShoppingCartIcon, GiftIcon, StarIcon } from "lucide-react
 import { toast } from "sonner";
 import { saveGift } from "@/lib/supabase-actions";
 import { buildAmazonProductUrl, buildAmazonUrlWithCategory } from "@/lib/amazon";
+import { useTranslation } from "@/contexts/TranslationContext";
 import type { GiftIdea } from "@/types";
 import type { Region } from "@/lib/region";
 
@@ -29,6 +30,7 @@ export default function GiftCard({
   const [saved, setSaved] = useState(false);
   const [saving, setSaving] = useState(false);
   const [imgError, setImgError] = useState(false);
+  const tr = useTranslation();
 
   const buyUrl = gift.asin
     ? buildAmazonProductUrl(gift.asin, region)
@@ -51,13 +53,13 @@ export default function GiftCard({
         amazon_price: gift.amazon_price,
       });
       setSaved(true);
-      toast.success("Gift saved!");
+      toast.success(tr.giftCard.savedBtn + "!");
       onSaved?.();
     } catch (err: any) {
       if (err?.message === "Not authenticated") {
-        toast.error("Sign in to save gifts");
+        toast.error(tr.giftCard.notAuth);
       } else {
-        toast.error("Couldn't save — try again");
+        toast.error(tr.giftCard.saveError);
       }
     } finally {
       setSaving(false);
@@ -71,7 +73,7 @@ export default function GiftCard({
         {isTopPick && (
           <div className="absolute top-2 left-2 z-10 flex items-center gap-1 bg-gold text-white text-[10px] font-bold px-2 py-0.5 rounded-full">
             <StarIcon size={9} />
-            Great match
+            {tr.giftCard.topPick}
           </div>
         )}
         {gift.image_url && !imgError ? (
@@ -107,7 +109,7 @@ export default function GiftCard({
           <button
             onClick={handleSave}
             disabled={saved || saving}
-            title={saved ? "Saved" : "Save"}
+            title={saved ? tr.giftCard.savedBtn : tr.giftCard.saveBtn}
             className={[
               "flex items-center justify-center w-9 h-9 rounded-xl border transition-colors flex-shrink-0",
               saved
@@ -125,7 +127,7 @@ export default function GiftCard({
             className="flex-1 flex items-center justify-center gap-1.5 bg-ruby hover:bg-ruby-dark text-white text-xs font-bold py-2.5 rounded-xl transition-colors"
           >
             <ShoppingCartIcon size={13} />
-            Buy on Amazon
+            {tr.giftCard.buyBtn}
           </a>
         </div>
       </div>
