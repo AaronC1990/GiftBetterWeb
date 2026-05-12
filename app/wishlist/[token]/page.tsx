@@ -27,7 +27,10 @@ async function fetchWishlist(token: string): Promise<WishlistItem[] | null> {
   try {
     const res = await fetch(
       `${process.env.NEXT_PUBLIC_SUPABASE_URL}/functions/v1/wishlist-view?token=${encodeURIComponent(token)}`,
-      { next: { revalidate: 60 } }
+      {
+        headers: { apikey: process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY! },
+        next: { revalidate: 60 },
+      }
     );
     if (!res.ok) return null;
     const data = await res.json();
