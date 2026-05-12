@@ -26,14 +26,8 @@ interface Props {
 async function fetchWishlist(token: string): Promise<WishlistItem[] | null> {
   try {
     const res = await fetch(
-      `${process.env.NEXT_PUBLIC_SUPABASE_URL}/functions/v1/wishlist-view?token=${encodeURIComponent(token)}`,
-      {
-        headers: {
-        apikey: process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
-        Authorization: `Bearer ${process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!}`,
-      },
-        next: { revalidate: 60 },
-      }
+      `${process.env.NEXT_PUBLIC_APP_URL}/api/wishlist/${encodeURIComponent(token)}`,
+      { next: { revalidate: 60 } }
     );
     if (!res.ok) return null;
     const data = await res.json();
