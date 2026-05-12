@@ -28,7 +28,10 @@ async function fetchWishlist(token: string): Promise<WishlistItem[] | null> {
     const res = await fetch(
       `${process.env.NEXT_PUBLIC_SUPABASE_URL}/functions/v1/wishlist-view?token=${encodeURIComponent(token)}`,
       {
-        headers: { apikey: process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY! },
+        headers: {
+        apikey: process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+        Authorization: `Bearer ${process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!}`,
+      },
         next: { revalidate: 60 },
       }
     );

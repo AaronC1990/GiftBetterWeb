@@ -12,7 +12,10 @@ export async function GET(req: NextRequest) {
 
   try {
     const res = await fetch(url, {
-      headers: { apikey: anonKey! },
+      headers: {
+        apikey: anonKey!,
+        Authorization: `Bearer ${anonKey!}`,
+      },
     });
     status = res.status;
     fetchResult = await res.json();
