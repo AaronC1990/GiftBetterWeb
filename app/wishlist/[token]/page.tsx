@@ -31,7 +31,7 @@ async function fetchWishlist(token: string): Promise<WishlistItem[] | null> {
     );
     if (!res.ok) return null;
     const data = await res.json();
-    return Array.isArray(data) ? data : null;
+    return Array.isArray(data.gifts) ? data.gifts : null;
   } catch {
     return null;
   }
