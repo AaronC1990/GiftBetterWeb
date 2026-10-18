@@ -45,7 +45,7 @@ export interface RegionConfig {
 export const REGION_CONFIG: Record<Region, RegionConfig> = {
   us: {
     amazonDomain: "amazon.com",
-    affiliateTag: "giftspark0a-20",
+    affiliateTag: "giftbetter0b-20",
     serpDomain: "amazon.com",
     locale: "en",
     currencySymbol: "$",
